@@ -1,0 +1,49 @@
+...F..FF..FF
+
+Failures:
+
+  1) HTTPClient captured request should return the HTTP body with the #body method
+     Failure/Error: @res.body.should == "text"
+       expected: "text"
+            got: "" (using ==)
+     # ./spec/capture_spec.rb:31:in `block (3 levels) in <top (required)>'
+
+  2) Mechanize captured request should return the HTTP status with the #status method
+     Failure/Error: @res.status.should == 200
+     NoMethodError:
+       undefined method `status' for #<Net::HTTPOK 200 OK  readbody=true>
+     # ./spec/capture_spec.rb:27:in `block (3 levels) in <top (required)>'
+
+  3) Mechanize captured request should return the HTTP body with the #body method
+     Failure/Error: @res.body.should == "text"
+       expected: "text"
+            got: #<Net::ReadAdapter> (using ==)
+       Diff:
+       [34m@@ -1,2 +1,2 @@
+       [0m[31m-"text"
+       [0m[32m+#<Net::ReadAdapter>
+       [0m
+     # ./spec/capture_spec.rb:31:in `block (3 levels) in <top (required)>'
+
+  4) Net::HTTPResponse captured request should return the HTTP status with the #status method
+     Failure/Error: @res.status.should == 200
+     NoMethodError:
+       undefined method `status' for #<Net::HTTPOK 200 OK  readbody=true>
+     # ./spec/capture_spec.rb:27:in `block (3 levels) in <top (required)>'
+
+  5) Net::HTTPResponse captured request should return the HTTP body with the #body method
+     Failure/Error: @res.body.should == "text"
+       expected: "text"
+            got: "" (using ==)
+     # ./spec/capture_spec.rb:31:in `block (3 levels) in <top (required)>'
+
+Finished in 0.0569 seconds
+12 examples, 5 failures
+
+Failed examples:
+
+rspec ./spec/capture_spec.rb:30 # HTTPClient captured request should return the HTTP body with the #body method
+rspec ./spec/capture_spec.rb:26 # Mechanize captured request should return the HTTP status with the #status method
+rspec ./spec/capture_spec.rb:30 # Mechanize captured request should return the HTTP body with the #body method
+rspec ./spec/capture_spec.rb:26 # Net::HTTPResponse captured request should return the HTTP status with the #status method
+rspec ./spec/capture_spec.rb:30 # Net::HTTPResponse captured request should return the HTTP body with the #body method

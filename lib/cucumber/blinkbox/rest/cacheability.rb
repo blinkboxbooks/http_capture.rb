@@ -1,6 +1,6 @@
 module Cucumber
   module Blinkbox
-    module REST
+    module Rest
       module Cacheability
 
         def ensure_response_is_publicly_cacheable(response = last_response)

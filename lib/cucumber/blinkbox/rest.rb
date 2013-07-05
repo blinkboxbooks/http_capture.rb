@@ -1,6 +1,6 @@
 module Cucumber
   module Blinkbox
-    module REST
+    module Rest
     end
   end
 end

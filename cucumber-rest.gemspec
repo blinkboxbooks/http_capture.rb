@@ -1,14 +1,14 @@
 ($LOAD_PATH << File.expand_path("../lib", __FILE__)).uniq!
-require "sandal/version"
+require "cucumber/rest/version"
 
 Gem::Specification.new do |s|
-  s.name = "cucumber-blinkbox-gemspec"
-  s.version = Sandal::VERSION
+  s.name = "cucumber-rest"
+  s.version = Cucumber::Rest::VERSION
   s.summary = "Cucumber steps and support for testing RESTful services."
   s.description = "A set of Cucumber step definitions and support functions which encapsulate common RESTful functionality."
   s.author = "blinkbox books"
-  s.email = "tm-books-engineering@blinkbox.com"
-  s.homepage = "https://git.mobcastdev.com/TEST/cucumber-blinkbox-rest"
+  s.email = "greg@blinkbox.com"
+  s.homepage = "http://www.blinkboxbooks.com"
   s.license = "MIT"
 
   s.files = `git ls-files`.split($/)
@@ -22,5 +22,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "rspec", "~> 2.13"
 
   s.add_development_dependency "bundler", "~> 1.3"
+  s.add_development_dependency "rack-test", "~> 0.6"
   s.add_development_dependency "rake", "~> 10.1"
 end

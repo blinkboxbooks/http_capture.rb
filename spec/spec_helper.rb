@@ -13,12 +13,20 @@ class TestingApp < Sinatra::Base
   end
 end
 
+# Windows requires a different descriptor for "ignore the logs"
+dev_null = case RUBY_PLATFORM
+when /cygwin|mswin|mingw|bccwin|wince|emx/
+  "nul"
+else
+  "/dev/null"
+end
+
 # Start the real server on any open port
 $server = ::WEBrick::HTTPServer.new({
   :BindAddress => '127.0.0.1',
   :Port => 0,
   :OutputBufferSize => 5,
-  :Logger => WEBrick::Log.new("nul"),
+  :Logger => WEBrick::Log.new(dev_null),
   :AccessLog => []
 })
 

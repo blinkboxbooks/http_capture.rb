@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.extra_rdoc_files = ["README.md"]
 
+  s.post_install_message = ":: Coded for blinkbox books :: Love books, love code? Get in touch ::"
+
   # These are the supported libraries.
   s.add_development_dependency "rack-test", "~> 0.6"
   s.add_development_dependency "mechanize", "~> 2.7"

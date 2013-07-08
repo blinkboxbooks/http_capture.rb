@@ -1,0 +1,6 @@
+--no-color
+--require spec_helper
+-f JUnit          -o log/spec.xml
+--format progress -o log/spec.log
+--format html     -o log/spec.html
+-cfs

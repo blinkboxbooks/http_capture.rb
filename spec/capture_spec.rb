@@ -15,7 +15,8 @@ shared_examples "capturing HTTP responses" do
 
     context 'captured request' do
         before :all do
-            perform_get(make_test_uri(200,"text"))
+            immediate = perform_get(make_test_uri(200,"text"))
+
             @res = Net::CapturedHTTP.first
         end
         

@@ -12,6 +12,10 @@ class HTTPClient
       self.headers[key]
     end
 
+    def captured.body
+      self.http_body.content
+    end
+
     Net::CapturedHTTP.push(captured)
     res
   end

@@ -6,6 +6,11 @@ module Net
     class << self
       def new(httpv,code,msg)
         res = super
+
+        def res.status
+          self.code.to_i
+        end
+
         Net::CapturedHTTP.push(res)
         res
       end

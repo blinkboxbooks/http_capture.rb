@@ -30,7 +30,9 @@ end
 $server = ::WEBrick::HTTPServer.new({
   :BindAddress => '127.0.0.1',
   :Port => 0,
-  :OutputBufferSize => 5
+  :OutputBufferSize => 5,
+  :Logger => WEBrick::Log.new("/dev/null"),
+  :AccessLog => []
 })
 
 $server.mount "/", Rack::Handler::WEBrick, TestingApp.new

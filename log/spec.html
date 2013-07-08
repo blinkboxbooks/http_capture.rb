@@ -286,33 +286,33 @@ a {
   <dl style="margin-left: 0px;">
   <dt id="example_group_1" class="passed">HTTPClient</dt>
     <script type="text/javascript">moveProgressBar('8.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should capture a Net::HTTP.get request</span><span class='duration'>0.00568s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should capture a Net::HTTP.get request</span><span class='duration'>0.00578s</span></dd>
   </dl>
 </div>
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_2" class="passed">captured request</dt>
     <script type="text/javascript">moveProgressBar('16.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should return headers with the #[](key) method</span><span class='duration'>0.00078s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should return headers with the #[](key) method</span><span class='duration'>0.00083s</span></dd>
     <script type="text/javascript">moveProgressBar('25.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should return the HTTP status with the #status method</span><span class='duration'>0.00009s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should return the HTTP status with the #status method</span><span class='duration'>0.00015s</span></dd>
     <script type="text/javascript">makeRed('rspec-header');</script>
     <script type="text/javascript">makeRed('div_group_2');</script>
     <script type="text/javascript">makeRed('example_group_2');</script>
     <script type="text/javascript">moveProgressBar('33.3');</script>
     <dd class="example failed">
       <span class="failed_spec_name">should return the HTTP body with the #body method</span>
-      <span class="duration">0.00019s</span>
+      <span class="duration">0.00021s</span>
       <div class="failure" id="failure_1">
         <div class="message"><pre>expected: &quot;text&quot;
      got: &quot;&quot; (using ==)</pre></div>
-        <div class="backtrace"><pre>./spec/capture_spec.rb:31:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">29</span>
-<span class="linenum">30</span>        it 'should return the HTTP body with the #body method' do
-<span class="offending"><span class="linenum">31</span>            @res.body.should == "text"</span>
-<span class="linenum">32</span>        end
-<span class="linenum">33</span>    end
-<span class="linenum">34</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
+        <div class="backtrace"><pre>./spec/capture_spec.rb:34:in `block (3 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">32</span>
+<span class="linenum">33</span>        it 'should return the HTTP body with the #body method' do
+<span class="offending"><span class="linenum">34</span>            @res.body.should == "text"</span>
+<span class="linenum">35</span>        end
+<span class="linenum">36</span>    end
+<span class="linenum">37</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
       </div>
     </dd>
   </dl>
@@ -321,36 +321,23 @@ a {
   <dl style="margin-left: 0px;">
   <dt id="example_group_3" class="passed">Mechanize</dt>
     <script type="text/javascript">moveProgressBar('41.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should capture a Net::HTTP.get request</span><span class='duration'>0.00742s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should capture a Net::HTTP.get request</span><span class='duration'>0.00734s</span></dd>
   </dl>
 </div>
 <div id="div_group_4" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_4" class="passed">captured request</dt>
     <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should return headers with the #[](key) method</span><span class='duration'>0.00014s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should return headers with the #[](key) method</span><span class='duration'>0.00023s</span></dd>
+    <script type="text/javascript">moveProgressBar('58.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">should return the HTTP status with the #status method</span><span class='duration'>0.00010s</span></dd>
     <script type="text/javascript">makeRed('div_group_4');</script>
     <script type="text/javascript">makeRed('example_group_4');</script>
-    <script type="text/javascript">moveProgressBar('58.3');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">should return the HTTP status with the #status method</span>
-      <span class="duration">0.00016s</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>undefined method `status&#39; for #&lt;Net::HTTPOK 200 OK  readbody=true&gt;</pre></div>
-        <div class="backtrace"><pre>./spec/capture_spec.rb:27:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">25</span>
-<span class="linenum">26</span>        it 'should return the HTTP status with the #status method' do
-<span class="offending"><span class="linenum">27</span>            @res.status.should == 200</span>
-<span class="linenum">28</span>        end
-<span class="linenum">29</span>
-<span class="linenum">30</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
     <script type="text/javascript">moveProgressBar('66.6');</script>
     <dd class="example failed">
       <span class="failed_spec_name">should return the HTTP body with the #body method</span>
-      <span class="duration">0.00060s</span>
-      <div class="failure" id="failure_3">
+      <span class="duration">0.00065s</span>
+      <div class="failure" id="failure_2">
         <div class="message"><pre>expected: &quot;text&quot;
      got: #&lt;Net::ReadAdapter&gt; (using ==)
 Diff:
@@ -358,13 +345,13 @@ Diff:
 [0m[31m-&quot;text&quot;
 [0m[32m+#&lt;Net::ReadAdapter&gt;
 [0m</pre></div>
-        <div class="backtrace"><pre>./spec/capture_spec.rb:31:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">29</span>
-<span class="linenum">30</span>        it 'should return the HTTP body with the #body method' do
-<span class="offending"><span class="linenum">31</span>            @res.body.should == "text"</span>
-<span class="linenum">32</span>        end
-<span class="linenum">33</span>    end
-<span class="linenum">34</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
+        <div class="backtrace"><pre>./spec/capture_spec.rb:34:in `block (3 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">32</span>
+<span class="linenum">33</span>        it 'should return the HTTP body with the #body method' do
+<span class="offending"><span class="linenum">34</span>            @res.body.should == "text"</span>
+<span class="linenum">35</span>        end
+<span class="linenum">36</span>    end
+<span class="linenum">37</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
       </div>
     </dd>
   </dl>
@@ -373,51 +360,38 @@ Diff:
   <dl style="margin-left: 0px;">
   <dt id="example_group_5" class="passed">Net::HTTPResponse</dt>
     <script type="text/javascript">moveProgressBar('75.0');</script>
-    <dd class="example passed"><span class="passed_spec_name">should capture a Net::HTTP.get request</span><span class='duration'>0.02072s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should capture a Net::HTTP.get request</span><span class='duration'>0.01938s</span></dd>
   </dl>
 </div>
 <div id="div_group_6" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_6" class="passed">captured request</dt>
     <script type="text/javascript">moveProgressBar('83.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should return headers with the #[](key) method</span><span class='duration'>0.00014s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">should return headers with the #[](key) method</span><span class='duration'>0.00015s</span></dd>
+    <script type="text/javascript">moveProgressBar('91.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">should return the HTTP status with the #status method</span><span class='duration'>0.00011s</span></dd>
     <script type="text/javascript">makeRed('div_group_6');</script>
     <script type="text/javascript">makeRed('example_group_6');</script>
-    <script type="text/javascript">moveProgressBar('91.6');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">should return the HTTP status with the #status method</span>
-      <span class="duration">0.00012s</span>
-      <div class="failure" id="failure_4">
-        <div class="message"><pre>undefined method `status&#39; for #&lt;Net::HTTPOK 200 OK  readbody=true&gt;</pre></div>
-        <div class="backtrace"><pre>./spec/capture_spec.rb:27:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">25</span>
-<span class="linenum">26</span>        it 'should return the HTTP status with the #status method' do
-<span class="offending"><span class="linenum">27</span>            @res.status.should == 200</span>
-<span class="linenum">28</span>        end
-<span class="linenum">29</span>
-<span class="linenum">30</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
     <script type="text/javascript">moveProgressBar('100.0');</script>
     <dd class="example failed">
       <span class="failed_spec_name">should return the HTTP body with the #body method</span>
-      <span class="duration">0.00023s</span>
-      <div class="failure" id="failure_5">
+      <span class="duration">0.00014s</span>
+      <div class="failure" id="failure_3">
         <div class="message"><pre>expected: &quot;text&quot;
      got: &quot;&quot; (using ==)</pre></div>
-        <div class="backtrace"><pre>./spec/capture_spec.rb:31:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">29</span>
-<span class="linenum">30</span>        it 'should return the HTTP body with the #body method' do
-<span class="offending"><span class="linenum">31</span>            @res.body.should == "text"</span>
-<span class="linenum">32</span>        end
-<span class="linenum">33</span>    end
-<span class="linenum">34</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
+        <div class="backtrace"><pre>./spec/capture_spec.rb:34:in `block (3 levels) in <top (required)>'</pre></div>
+    <pre class="ruby"><code><span class="linenum">32</span>
+<span class="linenum">33</span>        it 'should return the HTTP body with the #body method' do
+<span class="offending"><span class="linenum">34</span>            @res.body.should == "text"</span>
+<span class="linenum">35</span>        end
+<span class="linenum">36</span>    end
+<span class="linenum">37</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
       </div>
     </dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.05690 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "12 examples, 5 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.05545 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "12 examples, 3 failures";</script>
 </div>
 </div>
 </body>

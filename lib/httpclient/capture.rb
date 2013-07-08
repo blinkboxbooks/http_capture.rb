@@ -8,6 +8,12 @@ class HTTPClient
     Net::Captured::RESPONSES.push(Net::Captured::HTTPClientResponse.new(real_response))
     real_response
   end
+
+  alias :old_get_content :get_content
+  def get_content(uri, *args, &block)
+    query, header = keyword_argument(args, :query, :header)
+    success_content(follow_redirect(:get, uri, query, nil, header || {}, &block))
+  end
 end
 
 # Modifications of the base class to work with HTTPClient
@@ -16,12 +22,12 @@ module Net
     class HTTPClientResponse < Net::Captured::Response
       # header access
       def [](key)
-        @response.headers[key]
+        @real_response.headers[key]
       end
 
       # Body access
       def body
-        @response.content
+        @real_response.content
       end
     end
   end

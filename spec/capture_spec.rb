@@ -8,15 +8,18 @@ shared_examples "capturing HTTP responses" do
 
     it 'should capture a Net::HTTP.get request' do
         # Do the request
-        perform_get("http://www.ietf.org/rfc/rfc0822.txt")
+        perform_get(make_test_uri())
 
         Net::Captured::RESPONSES.should have(1).item
     end
 
-    context 'captured request' do
+    context 'captured response wrapper' do
         before :all do
-            immediate = perform_get("http://www.ietf.org/rfc/rfc0822.txt")
-            @res = Net::Captured::RESPONSES.first
+            Net::Captured::RESPONSES.clear
+
+            @actual = perform_get(make_test_uri(200,"text"))
+
+            @res = Net::Captured::RESPONSES.last
         end
         
         it 'should return headers with the #[](key) method' do

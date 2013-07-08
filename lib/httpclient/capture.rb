@@ -7,16 +7,15 @@ class HTTPClient
     res = old_do_request(method, uri, query, body, header, &block)
     
     # Modify the object for standardized access
-    captured = res.dup
-    def captured.[](key)
+    def res.[](key)
       self.headers[key]
     end
 
-    def captured.body
-      self.http_body.content
+    def res.body
+      self.content
     end
 
-    Net::CapturedHTTP.push(captured)
+    Net::CapturedHTTP.push(res)
     res
   end
 end

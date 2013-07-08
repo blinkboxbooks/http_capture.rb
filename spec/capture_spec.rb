@@ -13,7 +13,7 @@ shared_examples "capturing HTTP responses" do
         Net::Captured::RESPONSES.should have(1).item
     end
 
-    context 'captured response wrapper' do
+    context 'last captured response wrapper' do
         before :all do
             Net::Captured::RESPONSES.clear
 

@@ -4,19 +4,16 @@ require 'net/http/captured'
 class HTTPClient
   alias :old_do_request :do_request
   def do_request(method, uri, query, body, header, &block)
-    res = old_do_request(method, uri, query, body, header, &block)
-    
-    captured = Net::Captured::HTTPClient.new(res)
-    
-    Net::Captured::Responses.push(captured)
-    res
+    real_response = old_do_request(method, uri, query, body, header, &block)
+    Net::Captured::RESPONSES.push(Net::Captured::HTTPClientResponse.new(real_response))
+    real_response
   end
 end
 
-# Modifications of the base class to work with Net::HTTP
+# Modifications of the base class to work with HTTPClient
 module Net
   module Captured
-    class HTTPClient < Net::Captured::Base
+    class HTTPClientResponse < Net::Captured::Response
       # header access
       def [](key)
         @response.headers[key]

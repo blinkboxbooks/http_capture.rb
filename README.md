@@ -1,7 +1,6 @@
-cucumber-blinkbox-rest
-======================
+# Cucumber::Rest
 
-Standard cucumber step definitions and helpers for testing RESTful APIs
+A set of cucumber step definitions and helpers for testing RESTful APIs
 
 ## HTTP library abstraction
 

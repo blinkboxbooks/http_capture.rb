@@ -3,6 +3,7 @@ require 'webrick'
 require 'rack'
 require 'uri'
 require 'logger'
+require 'cucumber'
 
 # This app allows us to make real HTTP responses from tests
 class TestingApp
@@ -31,7 +32,7 @@ $server = ::WEBrick::HTTPServer.new({
   :BindAddress => '127.0.0.1',
   :Port => 0,
   :OutputBufferSize => 5,
-  :Logger => WEBrick::Log.new("/dev/null"),
+  :Logger => WEBrick::Log.new("nul"), # equivalent to /dev/null but also works on Windows
   :AccessLog => []
 })
 

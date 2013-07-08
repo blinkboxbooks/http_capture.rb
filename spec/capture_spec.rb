@@ -3,21 +3,20 @@ require 'net/http/capture'
 shared_examples "capturing HTTP responses" do
     before :each do
         # Clear the captured requests
-        Net::Captured::Responses.clear
+        Net::Captured::RESPONSES.clear
     end
 
     it 'should capture a Net::HTTP.get request' do
         # Do the request
-        perform_get(make_test_uri())
+        perform_get("http://www.ietf.org/rfc/rfc0822.txt")
 
-        Net::Captured::Responses.should have(1).item
+        Net::Captured::RESPONSES.should have(1).item
     end
 
     context 'captured request' do
         before :all do
-            immediate = perform_get(make_test_uri(200,"text"))
-
-            @res = Net::Captured::Responses.first
+            immediate = perform_get("http://www.ietf.org/rfc/rfc0822.txt")
+            @res = Net::Captured::RESPONSES.first
         end
         
         it 'should return headers with the #[](key) method' do

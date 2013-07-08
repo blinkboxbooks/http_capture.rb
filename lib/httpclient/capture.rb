@@ -6,16 +6,26 @@ class HTTPClient
   def do_request(method, uri, query, body, header, &block)
     res = old_do_request(method, uri, query, body, header, &block)
     
-    # Modify the object for standardized access
-    def res.[](key)
-      self.headers[key]
-    end
-
-    def res.body
-      self.content
-    end
-
-    Net::CapturedHTTP.push(res)
+    captured = Net::Captured::HTTPClient.new(res)
+    
+    Net::Captured::Responses.push(captured)
     res
+  end
+end
+
+# Modifications of the base class to work with Net::HTTP
+module Net
+  module Captured
+    class HTTPClient < Net::Captured::Base
+      # header access
+      def [](key)
+        @response.headers[key]
+      end
+
+      # Body access
+      def body
+        @response.content
+      end
+    end
   end
 end

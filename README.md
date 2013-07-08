@@ -16,9 +16,10 @@ Because it's beneficial to use a number of different HTTP libraries during our t
     clnt.get_content("http://google.com") # => "<html>..."
 
     # Now you can retrieve all the captured responses:
-    Net::CapturedHTTP.last.status # => 200
-    Net::CapturedHTTP.last['Content-Length'] # => 12345
-    Net::CapturedHTTP.last.body # => "<html>..."
+    Net::Captured::Responses.last.status # => 200
+    Net::Captured::Responses.last['Content-Length'] # => 12345
+    Net::Captured::Responses.last.body # => "<html>..."
+    Net::Captured::Responses.last.response # => <HTTPClient::Response>
 
-The objects in the CapturedHTTP array contain the exact objects, wrapped by 
+The objects in the Captured::Responses array contain the exact objects, wrapped by helper functions which expose three methods: `code` for the status code, `[](key)` for accessing headers and `body` for reading the body of the document.
 

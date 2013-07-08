@@ -1,5 +1,5 @@
 require 'net/http'
-require 'net/http/captured'
+require 'http_capture'
 
 module Net
   class HTTP
@@ -7,7 +7,7 @@ module Net
     def request(req, body = nil, &block)
       real_response = old_request(req, body, &block)
 
-      Net::Captured::RESPONSES.push(Net::Captured::NetHTTPResponse.new(real_response))
+      HttpCapture::RESPONSES.push(HttpCapture::NetHTTPResponse.new(real_response))
       real_response
     end
   end
@@ -24,17 +24,15 @@ module Net
   end
 end
 
-module Net
-  module Captured
-    class NetHTTPResponse < Net::Captured::Response
-      def status
-        @real_response.code.to_i
-      end
+module HttpCapture
+  class NetHTTPResponse < HttpCapture::Response
+    def status
+      @real_response.code.to_i
+    end
 
-      def body
-        return @real_response.body.stored_body if @real_response.body.respond_to? :stored_body
-        @real_response.body
-      end
+    def body
+      return @real_response.body.stored_body if @real_response.body.respond_to? :stored_body
+      @real_response.body
     end
   end
 end

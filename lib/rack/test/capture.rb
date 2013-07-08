@@ -1,5 +1,5 @@
 require 'rack/test'
-require 'net/http/captured'
+require 'http_capture'
 
 module Rack
   class MockSession
@@ -13,7 +13,7 @@ module Rack
 
       @last_response = MockResponse.new(status, headers, body, env["rack.errors"].flush)
 
-      Net::Captured::RESPONSES.push(Net::Captured::RackTestResponse.new(@last_response))
+      HttpCapture::RESPONSES.push(HttpCapture::RackTestResponse.new(@last_response))
 
       body.close if body.respond_to?(:close)
 
@@ -31,12 +31,10 @@ module Rack
 end
 
 
-module Net
-  module Captured
-    class RackTestResponse < Net::Captured::Response
-      def [](key)
-        @real_response.header[key]
-      end
+module HttpCapture
+  class RackTestResponse < HttpCapture::Response
+    def [](key)
+      @real_response.header[key]
     end
   end
 end

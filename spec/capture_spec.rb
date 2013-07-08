@@ -3,23 +3,23 @@ require 'net/http/capture'
 shared_examples "capturing HTTP responses" do
     before :each do
         # Clear the captured requests
-        Net::Captured::RESPONSES.clear
+        HttpCapture::RESPONSES.clear
     end
 
     it 'should capture a Net::HTTP.get request' do
         # Do the request
         perform_get(make_test_uri())
 
-        Net::Captured::RESPONSES.should have(1).item
+        HttpCapture::RESPONSES.should have(1).item
     end
 
     context 'last captured response wrapper' do
         before :all do
-            Net::Captured::RESPONSES.clear
+            HttpCapture::RESPONSES.clear
 
             @actual = perform_get(make_test_uri(200,"text"))
 
-            @res = Net::Captured::RESPONSES.last
+            @res = HttpCapture::RESPONSES.last
         end
         
         it 'should return headers with the #[](key) method' do

@@ -3,7 +3,6 @@ require 'webrick'
 require 'sinatra/base'
 require 'uri'
 require 'logger'
-require 'cucumber'
 
 # This app allows us to make real HTTP responses from tests
 class TestingApp < Sinatra::Base

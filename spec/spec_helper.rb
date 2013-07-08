@@ -18,7 +18,7 @@ $server = ::WEBrick::HTTPServer.new({
   :BindAddress => '127.0.0.1',
   :Port => 0,
   :OutputBufferSize => 5,
-  :Logger => WEBrick::Log.new("/dev/null"),
+  :Logger => WEBrick::Log.new("nul"),
   :AccessLog => []
 })
 

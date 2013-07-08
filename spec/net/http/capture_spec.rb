@@ -2,7 +2,7 @@ require 'net/http'
 require 'net/http/capture'
 require 'uri'
 
-describe Net::HTTPResponse do
+describe Net::HTTP do
     include_examples "capturing HTTP responses"
     
     def perform_get(uri)

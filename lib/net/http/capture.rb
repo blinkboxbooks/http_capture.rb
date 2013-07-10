@@ -26,10 +26,6 @@ end
 
 module HttpCapture
   class NetHTTPResponse < HttpCapture::Response
-    def status
-      @real_response.code.to_i
-    end
-
     def body
       return @real_response.body.stored_body if @real_response.body.respond_to? :stored_body
       @real_response.body

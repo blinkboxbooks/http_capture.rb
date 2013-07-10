@@ -27,6 +27,12 @@ shared_examples "capturing HTTP responses" do
             @res['Content-Length'].should be_a(String)
         end
 
+        it 'should support enumerating the headers method' do
+            @res.each do |item|
+                item.should be_a(Array)
+            end
+        end
+
         it 'should return the HTTP status with the #status method' do
             @res.status.should == 200
         end

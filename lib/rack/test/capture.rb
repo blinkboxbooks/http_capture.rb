@@ -13,7 +13,7 @@ module Rack
 
       @last_response = MockResponse.new(status, headers, body, env["rack.errors"].flush)
 
-      HttpCapture::RESPONSES.push(HttpCapture::RackTestResponse.new(@last_response))
+      HttpCapture::RESPONSES.push(HttpCapture::Response.new(@last_response))
 
       body.close if body.respond_to?(:close)
 
@@ -26,15 +26,6 @@ module Rack
       else
         @last_response
       end
-    end
-  end
-end
-
-
-module HttpCapture
-  class RackTestResponse < HttpCapture::Response
-    def [](key)
-      @real_response.header[key]
     end
   end
 end

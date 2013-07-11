@@ -19,10 +19,9 @@ end
 # Modifications of the base class to work with HTTPClient
 module HttpCapture
   class HTTPClientResponse < Response
-    # header access
-    def [](key)
-      @real_response.headers[key]
-    end
+    # def each
+    #   @real_response.headers.each { |array| yield array.join(", ") }
+    # end
 
     # Body access
     def body

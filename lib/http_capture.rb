@@ -1,16 +1,58 @@
 require 'http_capture/version'
 
+# Contains functionality to capture HTTP traffic from a variety of libraries.
 module HttpCapture
   RESPONSES = []
 
+  # Represents a captured request.
+  class Request
+    def initialize(real_request)
+      @real_request = real_request
+    end
+
+    # The request method as an upper-case string.
+    def method
+      if @real_request.respond_to?(:request_method)
+        @real_request.request_method.to_s.upcase
+      else
+        @real_request.method.to_s.upcase
+      end
+    end
+
+    # The request path.
+    def path
+      @real_request.path
+    end
+
+    # The complete request URI.
+    def uri
+      uri = if @real_request.respond_to?(:uri)
+              @real_request.uri
+            else
+              @real_request.url
+            end
+      uri = URI.parse(uri.to_s) unless uri.is_a?(URI)
+      uri
+    end
+  end
+
+  # Represents a captured response.
   class Response
     include Enumerable
 
-    def initialize(real_response)
+    # The request that this is a response to.
+    attr_reader :request
+
+    # The duration of the request in seconds.
+    attr_reader :duration
+
+    def initialize(real_response, request: nil, duration: nil)
       @real_response = real_response
+      @request = request
+      @duration = duration
     end
 
-    # The default header accessor
+    # Provides access to the response headers.
     def [](key)
       if @real_response.respond_to?(:[])
         @real_response[key]
@@ -47,6 +89,11 @@ module HttpCapture
     # The default body accessor
     def body
       @real_response.body
+    end
+
+    # Whether the request was successful.
+    def successful?
+      status >= 200 && status < 300
     end
   end
 end

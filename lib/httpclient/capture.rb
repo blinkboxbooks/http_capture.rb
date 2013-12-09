@@ -9,7 +9,7 @@ class HTTPClient
     duration = Time.now.to_f - start_time
 
     captured_request = HttpCapture::HTTPClientRequest.new(method, uri, query)
-    captured_response = HttpCapture::HTTPClientResponse.new(captured_request, real_response, duration)
+    captured_response = HttpCapture::HTTPClientResponse.new(real_response, request: captured_request, duration: duration)
     HttpCapture::RESPONSES.push(captured_response)
 
     real_response

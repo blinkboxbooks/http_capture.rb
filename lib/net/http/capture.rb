@@ -10,7 +10,7 @@ module Net
       duration = Time.now.to_f - start_time
 
       captured_request = HttpCapture::Request.new(req)
-      captured_response = HttpCapture::NetHTTPResponse.new(captured_request, real_response, duration)
+      captured_response = HttpCapture::NetHTTPResponse.new(real_response, request: captured_request, duration: duration)
       HttpCapture::RESPONSES.push(captured_response)
 
       real_response

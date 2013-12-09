@@ -46,9 +46,9 @@ module HttpCapture
     # The duration of the request in seconds.
     attr_reader :duration
 
-    def initialize(request, real_response, duration)
-      @request = request
+    def initialize(real_response, request: nil, duration: nil)
       @real_response = real_response
+      @request = request
       @duration = duration
     end
 

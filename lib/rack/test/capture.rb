@@ -16,7 +16,7 @@ module Rack
 
       @last_response = MockResponse.new(status, headers, body, env["rack.errors"].flush)
       captured_request = HttpCapture::Request.new(@last_request)
-      captured_response = HttpCapture::Response.new(captured_request, @last_response, duration)
+      captured_response = HttpCapture::Response.new(@last_response, request: captured_request, duration: duration)
       HttpCapture::RESPONSES.push(captured_response)
 
       body.close if body.respond_to?(:close)

@@ -21,7 +21,7 @@ shared_examples "capturing HTTP responses" do
       @it = HttpCapture::RESPONSES.last
     end
     
-    it 'should capture the response that made the request' do
+    it 'should capture the request that triggered the response' do
       expect(@it.request).to_not be_nil
     end
     

@@ -5,9 +5,14 @@ module Net
   class HTTP
     alias :old_request :request    
     def request(req, body = nil, &block)
+      start_time = Time.now.to_f
       real_response = old_request(req, body, &block)
+      duration = Time.now.to_f - start_time
 
-      HttpCapture::RESPONSES.push(HttpCapture::NetHTTPResponse.new(real_response))
+      captured_request = HttpCapture::Request.new(req)
+      captured_response = HttpCapture::NetHTTPResponse.new(real_response, request: captured_request, duration: duration)
+      HttpCapture::RESPONSES.push(captured_response)
+
       real_response
     end
   end

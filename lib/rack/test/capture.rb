@@ -8,12 +8,16 @@ module Rack
     # usual `alias` method. This works, let's leave it at that for now!
     def request(uri, env)
       env["HTTP_COOKIE"] ||= cookie_jar.for(uri)
+
       @last_request = Rack::Request.new(env)
+      start_time = Time.now.to_f
       status, headers, body = @app.call(@last_request.env)
+      duration = Time.now.to_f - start_time
 
       @last_response = MockResponse.new(status, headers, body, env["rack.errors"].flush)
-
-      HttpCapture::RESPONSES.push(HttpCapture::Response.new(@last_response))
+      captured_request = HttpCapture::Request.new(@last_request)
+      captured_response = HttpCapture::Response.new(@last_response, request: captured_request, duration: duration)
+      HttpCapture::RESPONSES.push(captured_response)
 
       body.close if body.respond_to?(:close)
 

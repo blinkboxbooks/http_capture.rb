@@ -1,4 +1,3 @@
-require 'yarjuf'
 require 'webrick'
 require 'sinatra/base'
 require 'uri'

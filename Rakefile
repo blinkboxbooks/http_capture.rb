@@ -2,7 +2,8 @@ require 'rake'
 require 'bundler/gem_tasks'
 
 task :default => :build
-task :build => :spec
+task :build => :test
+task :test => :spec
 
 desc "Run all rspec tests"
 begin

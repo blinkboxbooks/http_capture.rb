@@ -1,3 +1,3 @@
 module HttpCapture
-  VERSION = '0.1.0'
+  VERSION = File.read(File.join(__dir__,"../../VERSION")) rescue "0.1.0"
 end

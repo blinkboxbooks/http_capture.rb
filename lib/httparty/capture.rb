@@ -1,4 +1,4 @@
 require 'httparty'
-require 'http_capture'
+require 'net/http/capture'
 
 # Doesn't need anything extra as Net::HTTP takes care of everything

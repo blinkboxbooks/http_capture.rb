@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.0.0
+  - 2.1.2
+deploy:
+  provider: rubygems
+  api_key:
+    secure: G2rk3KCBDCD0QDbKJtTXsdtWlfSewvBImu90oaBBlVW97v423GfQ+xRWH2amHBIw0UYwgqDDnMAG38oAovKcYgFe3dHNwKIrwLsZDEL7syOa68P5swOsYaGLboZjSFcfjFWqfp6UcrBNeVjzdaXcbIJK8c+UTCpt/zUnDYFj/zo=
+  gem: http_capture
+  on:
+    repo: blinkboxbooks/http_capture.rb
+    rvm: 2.1.2
+    branch: master

@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.description = "Captures the Response objects from HTTParty, Mechanize, Net::HTTP, HTTPClient and Rack::Test and abstracts them for use in testing libraries."
   s.author = "blinkbox books"
   s.email = "jphastings@blinkbox.com"
-  s.homepage = "http://www.blinkboxbooks.com"
+  s.homepage = "http://blinkboxbooks.github.io/"
   s.license = "MIT"
 
   s.files = `git ls-files`.split($/)
